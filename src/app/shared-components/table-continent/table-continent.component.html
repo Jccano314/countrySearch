@@ -1,0 +1,12 @@
+<table class="mainTable" aria-describedby="showCountries">
+  <thead>
+    <tr>
+      <th scope="row">{{nameCountry}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of country" >
+      <td><img src="{{row.flag}}" alt="flag">{{row.name}}</td>
+    </tr>
+  </tbody>
+</table>

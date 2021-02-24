@@ -1,0 +1,41 @@
+.mainCountry {
+  padding: 0 !important;
+  margin: 0 !important;
+  text-align: center !important;
+  .header {
+    text-align: center !important;
+    height: 385px;
+
+    .panel-l {
+      width: 50%;
+      float: left;
+
+      p {
+        margin: 8% 0 0px 2%;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
+        font-weight: bold;
+        font-style: normal;
+        font-size: 50px;
+        line-height: 59px;
+        color: #09295E !important;
+        span {
+          color: #21adcf !important;
+        }
+      }
+    }
+    .panel-r {
+      background-image: url("/assets/img/Rectangle300.png") !important;
+      background-position: right;
+      height: 400px;
+      width: 50%;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: -16px;
+      right: 0px;
+    }
+  }
+  .countryList{
+    text-align: left !important;
+  }
+
+}

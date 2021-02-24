@@ -1,0 +1,10 @@
+<div class="continentsList">
+  <app-table-continent *ngIf="emptyRow(continentsFiltered.africa)" [country]="continentsFiltered.africa" [nameCountry]="'Africa'" ></app-table-continent>
+  <app-table-continent *ngIf="emptyRow(continentsFiltered.americas)" [country]="continentsFiltered.americas" [nameCountry]="'America'" ></app-table-continent>
+  <app-table-continent *ngIf="emptyRow(continentsFiltered.asia)" [country]="continentsFiltered.asia" [nameCountry]="'Asia'" ></app-table-continent>
+  <app-table-continent *ngIf="emptyRow(continentsFiltered.europe)" [country]="continentsFiltered.europe" [nameCountry]="'Europa'" ></app-table-continent>
+  <app-table-continent *ngIf="emptyRow(continentsFiltered.oceania)" [country]="continentsFiltered.oceania" [nameCountry]="'Oceania'" ></app-table-continent>
+</div>
+<div *ngIf="isEmpty"  class="noResults">
+  <h2>No results found</h2>
+</div>

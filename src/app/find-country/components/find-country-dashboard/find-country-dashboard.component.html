@@ -1,0 +1,16 @@
+<div class="mainCountry">
+  <div class="header">
+    <div class="panel-l">
+      <p>Find any <span>country</span> in the world.</p>
+      <app-filter-country
+        [continents]="continents"
+        (continentsFilteredOut)="updateData($event)">
+      </app-filter-country>
+    </div>
+    <div class="panel-r">
+    </div>
+  </div>
+  <div class="countryList">
+    <app-country-list [continentsFiltered]="continentsFiltered"></app-country-list>
+  </div>
+</div>
