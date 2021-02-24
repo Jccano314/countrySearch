@@ -1,7 +1,7 @@
 <div class="search-field">
-    <input class="form-field" (keyup)="filterCountry($event)" type="text" placeholder="Search country">
-    <select name="attr" id="sd">
-      <option *ngFor="let label of filterColumns"  value="{{label.value}}">{{label.name}}</option>
+    <input class="form-field"  [(ngModel)]="searchText" (keyup)="filterCountry($event)" type="text" placeholder="Search country">
+    <select name="attr" id="sd" (change)="setFilter($event)">
+      <option *ngFor="let label of filterColumns" value="{{label.value}}">{{label.name}}</option>
     </select>
     <div class="icon-search">
       <img src="../../../../assets/img/Vector.png" alt="search">

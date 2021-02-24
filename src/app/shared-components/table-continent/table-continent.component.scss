@@ -19,10 +19,15 @@
 
   tbody {
     td {
+      cursor: pointer;
       font-size: 12px;
       font-weight: 400;
       line-height: 14.06px;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+      &:hover {
+        background: rgb(33, 173, 207, 0.1);
+      }
 
       img {
         width: 22px;

@@ -5,6 +5,6 @@
   <app-table-continent *ngIf="emptyRow(continentsFiltered.europe)" [country]="continentsFiltered.europe" [nameCountry]="'Europa'" ></app-table-continent>
   <app-table-continent *ngIf="emptyRow(continentsFiltered.oceania)" [country]="continentsFiltered.oceania" [nameCountry]="'Oceania'" ></app-table-continent>
 </div>
-<div *ngIf="isEmpty"  class="noResults">
-  <h2>No results found</h2>
+<div *ngIf="isEmpty" class="noResults">
+  <p>No results found</p>
 </div>

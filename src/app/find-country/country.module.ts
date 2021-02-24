@@ -1,3 +1,4 @@
+import { ModalModule } from 'angular-custom-modal';
 import { SharedComponentsModule } from './../shared-components/shared-components.module';
 import { Helper } from './helpers/helper';
 import { GeneralService } from './shared/services/general.service';
@@ -26,7 +27,8 @@ import { CountryListComponent } from './components/country-list/country-list.com
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedComponentsModule
+    SharedComponentsModule,
+    ModalModule
   ],
   exports: [
     HomeRouterModule

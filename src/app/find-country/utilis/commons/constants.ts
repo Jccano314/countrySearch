@@ -9,23 +9,23 @@ export const HEADER_CONTINENTS_FILTER = [
   },
   {
     name: 'Africa',
-    value: 'AF'
+    value: 'Africa'
   },
   {
     name: 'America',
-    value: 'AM'
+    value: 'Americas'
   },
   {
     name: 'Asia',
-    value: 'AS'
+    value: 'Asia'
   },
   {
     name: 'Europe',
-    value: 'EU'
+    value: 'Europe'
   },
   {
     name: 'Oceania',
-    value: 'OC'
+    value: 'Oceania'
   }
 ];
 

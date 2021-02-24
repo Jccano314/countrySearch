@@ -16,6 +16,7 @@ export class FilterCountryComponent implements OnChanges {
   public continentsFiltered: Continents = new Continents();
   public filterColumns: any[] = HEADER_CONTINENTS_FILTER;
   public searchText: string;
+  public selectText = 'SA';
 
   constructor() { }
 
@@ -27,15 +28,12 @@ export class FilterCountryComponent implements OnChanges {
 
   public async filterCountry(search: any) {
     setTimeout(async () => {
-      const filterText = search.target.value;
       this.continentsFiltered = new Continents();
+      const filterText = search.target.value;
       if (filterText !== '') {
-        this.continentsFiltered.africa = await this.applyFilter('africa', filterText);
-        this.continentsFiltered.americas = await this.applyFilter('americas', filterText);
-        this.continentsFiltered.asia = await this.applyFilter('asia', filterText);
-        this.continentsFiltered.europe = await this.applyFilter('europe', filterText);
-        this.continentsFiltered.oceania = await this.applyFilter('oceania', filterText);
-        this.continentsFilteredOut.emit(this.continentsFiltered);
+        this.filterByContinents(filterText, this.selectText);
+      } else if (filterText === '' && this.selectText !== '') {
+        this.filterByContinents(null, this.selectText);
       } else {
         this.getAllCountries();
       }
@@ -43,15 +41,48 @@ export class FilterCountryComponent implements OnChanges {
 
   }
 
-  public applyFilter(field: string, filter: string) {
-    return this.continents[field].filter(
-      (f: Country) => f.name.toLowerCase().includes(filter.toLowerCase())
-    );
+  public applyFilter(field: string, filter: string, region?: string) {
+    if (filter) {
+      if (region !== 'SA' && region !== 'FA') {
+        return this.continents[field].filter(
+          (f: Country) => f.name.toLowerCase().includes(filter.toLowerCase()) && f.region === region
+        );
+      } else {
+        return this.continents[field].filter(
+          (f: Country) => f.name.toLowerCase().includes(filter.toLowerCase())
+        );
+      }
+    } else {
+      if (region !== 'SA' && region !== 'FA') {
+        return this.continents[field].filter(
+          (f: Country) => f.region === region
+        );
+      } else {
+        return this.continents[field];
+      }
+    }
+  }
+
+  public async filterByContinents(filterText: string, region?: string) {
+    this.continentsFiltered.africa = await this.applyFilter('africa', filterText, region);
+    this.continentsFiltered.americas = await this.applyFilter('americas', filterText, region);
+    this.continentsFiltered.asia = await this.applyFilter('asia', filterText, region);
+    this.continentsFiltered.europe = await this.applyFilter('europe', filterText, region);
+    this.continentsFiltered.oceania = await this.applyFilter('oceania', filterText, region);
+    this.continentsFilteredOut.emit(this.continentsFiltered);
   }
 
   public getAllCountries() {
     this.continentsFiltered = this.continents;
     this.continentsFilteredOut.emit(this.continentsFiltered);
+  }
+
+  public setFilter(event: any) {
+    this.continentsFiltered = new Continents();
+    const region = event.target.value;
+    this.selectText = region;
+    const text = this.searchText !== '' ? this.searchText : null;
+    this.filterByContinents(text, region);
   }
 
 }

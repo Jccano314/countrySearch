@@ -6,7 +6,25 @@
   </thead>
   <tbody>
     <tr *ngFor="let row of country" >
-      <td><img src="{{row.flag}}" alt="flag">{{row.name}}</td>
+      <td (click)="setData(row); countryDetailModal.open();" ><img src="{{row.flag}}" alt="flag">{{row.name}}</td>
     </tr>
   </tbody>
 </table>
+
+<modal #countryDetailModal>
+  <ng-template #modalBody>
+    <div class="modalBody">
+      <p><label class="nameCountry">{{countryDetail.name}}</label></p>
+      <div class="description">
+        <p><label class="fieldCountry">Region: <label class="basicField">{{countryDetail.region}}</label></label></p>
+        <p><label class="fieldCountry">Population: <label class="basicField">{{countryDetail.population}}</label></label></p>
+        <p><label class="fieldCountry">Capital: <label class="basicField">{{countryDetail.capital}}</label></label></p>
+        <p><label class="fieldCountry">Currency: <label class="basicField">{{countryDetail.currencies[0].name}}</label></label></p>
+        <p><label class="fieldCountry">Language: <label class="basicField">{{countryDetail.languages[0].name}}</label></label></p>
+        <p><label class="fieldCountry">Border Countries: <label class="basicField">{{getBorder(countryDetail)}}</label></label></p>
+        <p><label class="fieldCountry">Flag:</label></p>
+        <p><span class="fieldCountry"><img src="{{countryDetail.flag}}" alt="flag"></span></p>
+      </div>
+    </div>
+  </ng-template>
+</modal>
