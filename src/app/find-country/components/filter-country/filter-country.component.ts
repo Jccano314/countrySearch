@@ -22,7 +22,7 @@ export class FilterCountryComponent implements OnChanges {
 
   async ngOnChanges(change: any) {
     if (change.continents) {
-      this.getAllCountries();
+      await this.getAllCountries();
     }
   }
 
@@ -47,6 +47,10 @@ export class FilterCountryComponent implements OnChanges {
         return this.continents[field].filter(
           (f: Country) => f.name.toLowerCase().includes(filter.toLowerCase()) && f.region === region
         );
+      } else if (region === 'FA') {
+        return this.continents[field].filter(
+          (f: Country) => f.name.toLowerCase().includes(filter.toLowerCase()) && f.favorite === true
+        );
       } else {
         return this.continents[field].filter(
           (f: Country) => f.name.toLowerCase().includes(filter.toLowerCase())
@@ -56,6 +60,10 @@ export class FilterCountryComponent implements OnChanges {
       if (region !== 'SA' && region !== 'FA') {
         return this.continents[field].filter(
           (f: Country) => f.region === region
+        );
+      } else if (region === 'FA') {
+        return this.continents[field].filter(
+          (f: Country) => f.favorite === true
         );
       } else {
         return this.continents[field];
@@ -72,7 +80,7 @@ export class FilterCountryComponent implements OnChanges {
     this.continentsFilteredOut.emit(this.continentsFiltered);
   }
 
-  public getAllCountries() {
+  public async getAllCountries() {
     this.continentsFiltered = this.continents;
     this.continentsFilteredOut.emit(this.continentsFiltered);
   }

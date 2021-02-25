@@ -6,7 +6,12 @@
   </thead>
   <tbody>
     <tr *ngFor="let row of country" >
-      <td (click)="setData(row); countryDetailModal.open();" ><img src="{{row.flag}}" alt="flag">{{row.name}}</td>
+      <td (click)="setData(row); countryDetailModal.open();"><img src="{{row.flag}}" alt="flag">
+        {{row.name}}
+        <span class="icon-favorite" *ngIf="row.favorite">
+          <img src="../../../../assets/img/Star2.png" alt="favorite">
+        </span>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -14,7 +19,11 @@
 <modal #countryDetailModal>
   <ng-template #modalBody>
     <div class="modalBody">
-      <p><label class="nameCountry">{{countryDetail.name}}</label></p>
+      <p><label class="nameCountry">{{countryDetail.name}}</label>
+        <span class="icon-favorite">
+          <img (click)="setFavorite(countryDetail)" src="../../../../assets/img/Star{{starFavorite}}.png" alt="favorite">
+        </span>
+      </p>
       <div class="description">
         <p><label class="fieldCountry">Region: <label class="basicField">{{countryDetail.region}}</label></label></p>
         <p><label class="fieldCountry">Population: <label class="basicField">{{countryDetail.population}}</label></label></p>

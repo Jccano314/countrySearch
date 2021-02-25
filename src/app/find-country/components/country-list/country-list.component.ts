@@ -1,5 +1,6 @@
+import { Country } from './../../shared/models/country.model';
 import { Continents } from './../../shared/models/continents.model';
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 
 @Component({
   selector: 'app-country-list',
@@ -8,6 +9,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 })
 export class CountryListComponent implements OnChanges {
 
+  @Output() countryFavorite = new EventEmitter<any>();
   @Input() continentsFiltered: Continents;
 
   public isEmpty = false;
@@ -20,7 +22,7 @@ export class CountryListComponent implements OnChanges {
       setTimeout(() => {
         this.isEmpty = true;
         for (const property in this.continentsFiltered) {
-          if (this.continentsFiltered[property].length > 0 && this.isEmpty) {
+          if (this.continentsFiltered[property]?.length > 0 && this.isEmpty) {
             this.isEmpty = false;
           }
         }
@@ -32,6 +34,10 @@ export class CountryListComponent implements OnChanges {
 
   public emptyRow(row: any[]) {
     return (row && row.length > 0);
+  }
+
+  public getFavorite(row: Country) {
+    this.countryFavorite.emit(row);
   }
 
 }

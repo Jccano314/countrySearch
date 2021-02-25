@@ -1,0 +1,64 @@
+@import "../variables";
+
+body {
+  margin: 0 !important;
+
+  modal {
+    .modal {
+      background:$background-modal;
+
+      .modal-header {
+        display: none;
+      }
+
+      .modal-dialog {
+        background: #FFFFFF;
+        width: 886px;
+        height: 506px;
+        border-radius: 10px;
+        border: 1px solid #E0E0E0 !important;
+      }
+
+      .modalBody {
+        padding: 35px 40px 40px 50px;
+
+        .nameCountry{
+          color: $color-texto;
+          font-size: 40px;
+          line-height: 46.88px;
+          font-weight: 500;
+          font-family: $font-text;
+        }
+
+        .icon-favorite {
+          margin-left: 8px !important;
+          cursor: pointer;
+        }
+
+        .description {
+          p {
+            margin: 0px 0px 8px 0px !important;
+          }
+
+          .fieldCountry {
+            font-style: normal;
+            font-family: $font-text;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 23.44px;
+
+            .basicField {
+              font-weight: 400;
+            }
+
+            img {
+              width: 180px;
+            }
+          }
+        }
+
+      }
+    }
+
+  }
+}

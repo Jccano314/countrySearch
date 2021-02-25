@@ -28,6 +28,7 @@ export class FindCountryDashboardComponent implements OnInit {
   public async getListCountries() {
     this.generalService.getService(environment.restcountries, null).then(async (countryList: Country[]) => {
       this.helper.orderList(countryList);
+      this.helper.extractNameBorder(countryList);
       this.getListByContinents(countryList);
     });
   }
@@ -43,4 +44,36 @@ export class FindCountryDashboardComponent implements OnInit {
   public updateData(data: Continents) {
     this.continentsFiltered = data;
   }
+
+  public setFavorite(country: Country) {
+    switch (country.region) {
+      case 'Asia':
+        this.setFavoriteToList('asia', country);
+        break;
+      case 'Americas':
+        this.setFavoriteToList('americas', country);
+        break;
+      case 'Africa':
+        this.setFavoriteToList('africa', country);
+        break;
+      case 'Europe':
+        this.setFavoriteToList('europe', country);
+        break;
+      case 'Oceania':
+        this.setFavoriteToList('oceania', country);
+        break;
+      default:
+        break;
+    }
+  }
+
+  public setFavoriteToList(region: string, countryFavorite: Country) {
+    this.continents[region].forEach( (country: Country) => {
+      if (country.name === countryFavorite.name) {
+        country.favorite = country.favorite ? !country.favorite : true;
+      }
+    });
+
+  }
+
 }

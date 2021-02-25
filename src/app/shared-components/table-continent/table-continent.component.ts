@@ -1,5 +1,5 @@
 import { Country } from './../../find-country/shared/models/country.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-table-continent',
@@ -8,10 +8,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TableContinentComponent implements OnInit {
 
+  @Output() countryFavorite = new EventEmitter<any>();
+
   @Input() country: Country;
   @Input() nameCountry: string;
 
   public countryDetail: Country;
+  public starFavorite: string;
 
   constructor() { }
 
@@ -19,12 +22,21 @@ export class TableContinentComponent implements OnInit {
   }
 
   public setData(row: Country) {
-    console.log(row)
+    this.validateFavorite(row);
     this.countryDetail = row;
   }
 
   public getBorder(row: Country){
     return row.borders.join(', ');
+  }
+
+  public setFavorite(row: Country) {
+    this.countryFavorite.emit(row);
+    this.validateFavorite(this.countryDetail);
+  }
+
+  public validateFavorite(row: Country) {
+    this.starFavorite = row.favorite ? '2' : '1';
   }
 
 }

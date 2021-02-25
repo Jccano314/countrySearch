@@ -11,6 +11,7 @@
     </div>
   </div>
   <div class="countryList">
-    <app-country-list [continentsFiltered]="continentsFiltered"></app-country-list>
+    <app-country-list [continentsFiltered]="continentsFiltered"
+      (countryFavorite)="setFavorite($event)" ></app-country-list>
   </div>
 </div>

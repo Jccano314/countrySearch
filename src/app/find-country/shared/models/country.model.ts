@@ -28,6 +28,7 @@ export class Country {
     public translations?: Translation,
     public flag?: string,
     public regionalBlocs?: RegionalBloc[],
-    public cioc?: string
+    public cioc?: string,
+    public favorite?: boolean
   ) {}
 }

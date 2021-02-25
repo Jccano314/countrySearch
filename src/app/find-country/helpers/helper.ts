@@ -17,4 +17,17 @@ export class Helper {
     });
   }
 
+  public extractNameBorder(countryList: Country[]) {
+    countryList.forEach(country => {
+      const nameBorder = [];
+      country.borders.forEach(item => {
+        countryList.forEach(oneCountry => {
+          if (oneCountry.alpha3Code === item) {
+            nameBorder.push(oneCountry.name);
+          }
+        });
+      });
+      country.borders = nameBorder;
+  });
+  }
 }
