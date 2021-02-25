@@ -26,7 +26,7 @@ export class CountryListComponent implements OnChanges {
             this.isEmpty = false;
           }
         }
-      }, 250);
+      }, 400);
     } else {
       this.isEmpty = true;
     }
